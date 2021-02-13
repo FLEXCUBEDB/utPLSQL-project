@@ -1,0 +1,124 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+
+
+<groupId>org.example</groupId>
+<artifactId>maven-test</artifactId>
+<version>1.0</version>
+<packaging>pom</packaging>
+
+<name>utplsql-maven project</name>
+<properties>
+
+    <sonar.projectKey>${sonar.projectkey}</sonar.projectKey>
+    <sonar.organization>${sonar.organization}</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <sonar.login>${sonar.login}</sonar.login>
+<!--    <sonar.coverage.jacoco.xmlReportPaths>utplsql/sonar-test-reporter.xml</sonar.coverage.jacoco.xmlReportPaths>-->
+    <sonar.coverageReportPaths>target/utplsql/coverage-sonar-reporter.xml</sonar.coverageReportPaths>
+    <sonar.testExecutionReportPaths>target/utplsql/sonar-test-reporter.xml</sonar.testExecutionReportPaths>
+<!--    <sonar.tests>src</sonar.tests>-->
+<!--    <sonar.test.inclusions>**/*.test.js</sonar.test.inclusions>-->
+
+    <maven.compiler.source>15</maven.compiler.source>
+    <maven.compiler.target>15</maven.compiler.target>
+
+    <!-- URL of the connection to the database. -->
+    <!-- Can also be passed as execution parameters. -->
+    <!-- -DdbUrl="jdbc:oracle:thin:@127.0.0.1:1521:xe"
+     jdbc:oracle:thin:ut3/ut3@192.168.109.74:1521:fcjuat
+     -->
+    <dbUrl>${db.url}</dbUrl>
+    <!-- Database connection user. -->
+    <!-- -DdbUser="user" -->
+    <dbUser>${db.username}</dbUser>
+    <!-- Database connection password. -->
+    <!-- -DdbPassword="password" -->
+    <dbPass>${db.password}</dbPass>
+    <!-- url, user, password are set with dbUrl, dbUser, dbPass system properties -->
+</properties>
+    <!-- https://mvnrepository.com/artifact/org.utplsql/utplsql-maven-plugin -->
+   <dependencies>
+    <dependency>
+        <groupId>org.utplsql</groupId>
+        <artifactId>utplsql-maven-plugin</artifactId>
+        <version>3.1.4</version>
+    </dependency>
+
+<!--       <dependency>-->
+<!--           <groupId>org.sonarsource.sonarqube</groupId>-->
+<!--           <artifactId>sonar-plugin-api</artifactId>-->
+<!--           &lt;!&ndash; minimal version of SonarQube to support. &ndash;&gt;-->
+<!--           <version>7.6</version>-->
+<!--           &lt;!&ndash; mandatory scope &ndash;&gt;-->
+<!--           <scope>provided</scope>-->
+<!--       </dependency>-->
+
+   </dependencies>
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.utplsql</groupId>
+            <artifactId>utplsql-maven-plugin</artifactId>
+            <version>3.1.4</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>test</goal>
+                    </goals>
+                    <configuration>
+                        <!-- Mandatory Attributes -->
+
+                        <ignoreFailure>true</ignoreFailure>
+
+                        <paths>
+                            <path>ut3</path>
+                        </paths>
+
+                        <reporters>
+                            <reporter>
+                                <name>UT_COVERAGE_SONAR_REPORTER</name>
+                                <fileOutput>utplsql/coverage-sonar-reporter.xml</fileOutput>
+                                <consoleOutput>true</consoleOutput>
+                            </reporter>
+                            <reporter>
+                                <name>UT_SONAR_TEST_REPORTER</name>
+                                <fileOutput>utplsql/sonar-test-reporter.xml</fileOutput>
+                                <consoleOutput>true</consoleOutput>
+                            </reporter>
+                        </reporters>
+
+                        <sources>
+                            <source>
+                                <directory>src/test/resources/scripts/sources</directory>
+                                <includes>
+                                    <include>**/*bdy</include>
+                                    <include>**/*spc</include>
+                                </includes>
+                            </source>
+                        </sources>
+
+                        <tests>
+                            <test>
+                                <directory>src/test/resources/scripts/tests</directory>
+                                <includes>
+                                    <include>**/*bdy</include>
+                                    <include>**/*spc</include>
+                                </includes>
+                            </test>
+                        </tests>
+
+                    </configuration>
+
+                </execution>
+            </executions>
+
+        </plugin>
+    </plugins>
+</build>
+</project>
