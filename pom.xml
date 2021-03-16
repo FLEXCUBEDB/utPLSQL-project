@@ -11,10 +11,10 @@
     <name>utplsql-maven project</name>
     <properties>
 
-        <sonar.projectKey>${sonar.projectkey}</sonar.projectKey>
-        <sonar.organization>${sonar.organization}</sonar.organization>
+        <sonar.projectKey>FLEXCUBEDB_utPLSQL-project</sonar.projectKey>
+        <sonar.organization>flexcubedb<</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.login>${sonar.login}</sonar.login>
+        <sonar.login>7c202083ff8249016e2210b3b0f3107591af27f0</sonar.login>
         <!--    <sonar.coverage.jacoco.xmlReportPaths>target/utplsql/sonar-test-reporter.xml</sonar.coverage.jacoco.xmlReportPaths>-->
         <sonar.coverageReportPaths>target/utplsql/coverage-sonar-reporter.xml</sonar.coverageReportPaths>
         <sonar.testExecutionReportPaths>target/utplsql/sonar-test-reporter.xml</sonar.testExecutionReportPaths>
@@ -31,13 +31,13 @@
         <!-- -DdbUrl="jdbc:oracle:thin:@127.0.0.1:1521:xe"
          jdbc:oracle:thin:ut3/ut3@192.168.109.74:1521:fcjuat
          -->
-        <dbUrl>${db.url}</dbUrl>
+        <dbUrl>jdbc:oracle:thin:@192.168.109.74:1521/fcjuat</dbUrl>
         <!-- Database connection user. -->
         <!-- -DdbUser="user" -->
-        <dbUser>${db.username}</dbUser>
+        <dbUser>ut3</dbUser>
         <!-- Database connection password. -->
         <!-- -DdbPassword="password" -->
-        <dbPass>${db.password}</dbPass>
+        <dbPass>ut3</dbPass>
         <!-- url, user, password are set with dbUrl, dbUser, dbPass system properties -->
     </properties>
     <!-- https://mvnrepository.com/artifact/org.utplsql/utplsql-maven-plugin -->
