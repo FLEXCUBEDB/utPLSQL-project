@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+<file path="src/test/resources/scripts/tests/UT3.TEST_PKG_TEST_ME.bdy">
+<testCase name="test_fc_input_1" duration="24" >
+</testCase>
+<testCase name="test_fc_input_0" duration="5" >
+</testCase>
+<testCase name="test_fc_input_null" duration="33" >
+</testCase>
+<testCase name="test_pr_test_me_null" duration="27" >
+</testCase>
+<testCase name="test_pr_test_me_not_null" duration="37" >
+<failure message="some expectations have failed">
+<![CDATA[
+Actual: 2 (number) was expected to equal: 1 (number)
+at "UT3.TEST_PKG_TEST_ME", line 91 UT.EXPECT(VNCOUNT1 + 2).TO_EQUAL(VNCOUNT2);
+]]>
+</failure>
+</testCase>
+<testCase name="test_pr_test_me_exists" duration="3" >
+</testCase>
+<testCase name="test_pr_test_me_cursor" duration="383" >
+</testCase>
+</file>
+<file path="test_calc.test_calcsum">
+<testCase name="calcsum" duration="66" >
+</testCase>
+</file>
+</testExecutions>

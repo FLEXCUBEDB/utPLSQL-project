@@ -1,0 +1,7 @@
+organization=flexcubedb
+projectKey=FLEXCUBEDB_utPLSQL-project
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.18187
+dashboardUrl=https://sonarcloud.io/dashboard?id=FLEXCUBEDB_utPLSQL-project
+ceTaskId=AXg6IMnm96fEAGb0X0-V
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AXg6IMnm96fEAGb0X0-V
